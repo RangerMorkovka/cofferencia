@@ -9,7 +9,7 @@ const App = function App() {
   return (
     <body>
     <header>
-      <h1>Акции</h1>
+      <h1>Акци</h1>
     </header> 
     </body>
   )
