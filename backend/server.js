@@ -3,7 +3,7 @@ const app = express();
 const port = process.env.port || 5174;
 app.use(express.json());
 app.set ('trust proxy', true);
-const ALLOWED_IPS = ['::ffff:172.29.112.1','::ffff:10.59.23.207'];
+const ALLOWED_IPS = ['::ffff:172.29.112.1','::ffff:10.59.23.207', "::1"];
 
 app.get ('/api/check-access', (req,res) => {
 const clientIP = req.ip || req.socket.remoteAddress;

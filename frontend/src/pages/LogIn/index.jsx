@@ -6,12 +6,12 @@ import {Button} from '@mui/material';
 import styles from './Login.module.css';
 import { useForm } from 'react-hook-form'; //библиотека для работы с формами
 import { useDispatch, useSelector } from 'react-redux';// изменение и получение данных
-//import {fetchAuth, selectIsAuth} from '../../redux/slices/auth';
+import {fetchAuth, selectIsAuth} from '../../redux/slices/auth';
 import { Navigate } from 'react-router-dom';
 import { useNavigate } from "react-router-dom"; 
 
     const Login = () => {
-  /* const isAuth = useSelector(selectIsAuth);
+  const isAuth = useSelector(selectIsAuth);
     const dispatch = useDispatch();
     const {
         register, handleSubmit, formState: {errors, isValid},
@@ -20,7 +20,7 @@ import { useNavigate } from "react-router-dom";
             email: "",
             password: "",
         },
-        mode: onChange,
+        mode: "onChange",
 
     });
 
@@ -39,7 +39,7 @@ import { useNavigate } from "react-router-dom";
     };
     if(isAuth){
         return <Navigate to= "/" />
-    };*/
+    };
     return(
             <Paper classes= {{root: styles.root}}>
                 <Typography classes={{root: styles.title}} variant = 'h5'>
@@ -50,22 +50,22 @@ import { useNavigate } from "react-router-dom";
                             className = {styles.field}
                             lable= 'E-mail'
                             type= "email"
-                           // error= {Boolean(errors.email?.message)}
-                           // helperText= {errors.email?.message}
-                            //{...register("email", {required: 'Укажите почту'})}
+                           error= {Boolean(errors.email?.message)}
+                           helperText= {errors.email?.message}
+                            {...register("email", {required: 'Укажите почту'})}
                             fullWidth
                     />
                     <TextField 
                     className = {styles.field}
                     lable= 'Пароль'
                     type = 'password'
-                    //error = {Boolean(errors.password?.message)}
-                    //helperText = {errors.password?.message}
-                    //{...register('password',{required: 'Укажите пароль'})}
+                    error = {Boolean(errors.password?.message)}
+                    helperText = {errors.password?.message}
+                    {...register('password',{required: 'Укажите пароль'})}
                     fullWidth
                     />
                     <Button
-                            //disabled = {IsValid}
+                            disabled = {!isValid}
                             type = 'submit'
                             size = 'large'
                             variant = 'contained'
